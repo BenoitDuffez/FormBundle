@@ -11,6 +11,7 @@ use Alsatian\FormBundle\Form\ExtensibleEntityType;
 
 use Symfony\Component\Form\ResolvedFormTypeInterface;
 use Symfony\Component\PropertyAccess\PropertyAccess;
+use Symfony\Component\Serializer\NameConverter\CamelCaseToSnakeCaseNameConverter;
 
 class ExtensibleSubscriber implements EventSubscriberInterface
 {
@@ -138,7 +139,14 @@ class ExtensibleSubscriber implements EventSubscriberInterface
             }
         }
         else{
-            return $options['em']->getRepository($options['class'])->findById($data);
+            if(is_string($options['choice_value']) || method_exists($options['choice_value'], '__toString')){
+                $converter = new CamelCaseToSnakeCaseNameConverter(null,false);
+                $method = 'findBy' . $converter->denormalize((string)$options['choice_value']);
+                return $options['em']->getRepository($options['class'])->$method($data);
+            }
+            else{
+                return $options['em']->getRepository($options['class'])->findById($data);
+            }
         }
     }
 }
