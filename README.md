@@ -4,7 +4,7 @@ This bundle provide FormTypes extending ChoiceType, EntityType and DocumentType 
 
 Ideal for [Select2](https://select2.github.io/) integration.
 
-Works with Symfony ~2.8 || ~3.0
+Works with Symfony ~2.8 || ~3.0 || ~4.0 || ~5.0
 
 Features
 ========
@@ -12,38 +12,45 @@ Features
 The bundle provide 6 FormTypes designed to automate some common tasks :
 -----------------------------------------------------------------------
 
+- ***ExtensibleChoiceType*** : Extension for the built-in ChoiceType
+    
+    Choice type which starts with an empty HTML select and accept each submitted choice which has be added on the client side.
+    
+    - **Configuration** : Insert %alsatian_form.parameters.extensible_choice.attr_class% as class for the HTML select.
+    - **Options** : 'route' and 'route_params' to render a data-ajax--url tag in the HTML select.
+
+- ***ExtensibleEntityType*** : Extension for the built-in EntityType
+    
+    Entity type type which starts with an empty HTML select and accept each existing entity which has be added on the client side.
+    
+    - **Configuration** : Insert %alsatian_form.parameters.extensible_entity.attr_class% as class for the HTML select.
+    - **Options** : 'route' and 'route_params' to render a data-ajax--url tag in the HTML select.
+
+- ***ExtensibleDocumentType*** : Extension for the built-in DocumentType
+    
+    Document type which starts with an empty HTML select and accept each existing document which has be added on the client side.
+    
+    - **Configuration** : Insert %alsatian_form.parameters.extensible_document.attr_class% as class for the HTML select.
+    - **Options** : 'route' and 'route_params' to render a data-ajax--url tag in the HTML select.
+
 - ***AutocompleteType*** : Extension for the built-in TextType
+
+    Text type allowing to add some html attributes to expose ajax route for autocompletion.
     
     - **Configuration** : Insert %alsatian_form.parameters.autocomplete.attr_class% as class for the HTML input.
     - **Options** : 'route' and 'route_params' to render a data-ajax--url tag in the HTML input.
 
 - ***DatepickerType*** : Extension for the built-in DateType
     
-    - **Automatic** : Sets the date pattern with \IntlDateFormatter::SHORT and renders it as 'pattern' attribute in the HTML input.
+    Date type where the date pattern is rendered as 'pattern' attribute in the HTML input (Using \IntlDateFormatter::SHORT).
+    
     - **Configuration** : Insert %alsatian_form.parameters.date_picker.attr_class% as class for the HTML input.
 
 - ***DateTimepickerType*** : Extension for the built-in DateTimeType
     
-    - **Automatic** : Sets the date pattern with \IntlDateFormatter::SHORT and renders it as 'pattern' attribute in the HTML input.
+    DateTime type where the date pattern is rendered as 'pattern' attribute in the HTML input (Using \IntlDateFormatter::SHORT).
+    
     - **Configuration** : Insert %alsatian_form.parameters.datetime_picker.attr_class% as class for the HTML input.
-
-- ***ExtensibleChoiceType*** : Extension for the built-in ChoiceType
-    
-    - **Automatic** : Starts with an empty HTML select and accept each submitted choice which has be added on the client side.
-    - **Configuration** : Insert %alsatian_form.parameters.extensible_choice.attr_class% as class for the HTML select.
-    - **Options** : 'route' and 'route_params' to render a data-ajax--url tag in the HTML select.
-
-- ***ExtensibleDocumentType*** : Extension for the built-in DocumentType
-    
-    - **Automatic** : Starts with an empty HTML select and accept each valid document which has be added on the client side.
-    - **Configuration** : Insert %alsatian_form.parameters.extensible_document.attr_class% as class for the HTML select.
-    - **Options** : 'route' and 'route_params' to render a data-ajax--url tag in the HTML select.
-
-- ***ExtensibleEntityType*** : Extension for the built-in EntityType
-    
-    - **Automatic** : Starts with an empty HTML select and accept each valid entity which has be added on the client side.
-    - **Configuration** : Insert %alsatian_form.parameters.extensible_entity.attr_class% as class for the HTML select.
-    - **Options** : 'route' and 'route_params' to render a data-ajax--url tag in the HTML select.
 
 Installation
 ============
