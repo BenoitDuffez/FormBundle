@@ -21,16 +21,20 @@ abstract class AbstractRoutableType extends AbstractType
     {  
         $resolver->setDefaults(array('route'=>false,'route_params'=>array()));        
 
-        $resolver->setDefault('attr', function(Options $options, $attr){
+        $resolver->setNormalizer('attr', function (Options $options, $attr) {
             if($this->default_attr_class){
-                $attr['class'] = $this->default_attr_class;
+                if (array_key_exists('class', $attr)) {
+                    $attr['class'] = $this->default_attr_class . ' ' . $attr['class'];
+                } else {
+                    $attr['class'] = $this->default_attr_class;
+                }
             }
-            
-            if($options['route']){               
-                $attr['data-ajax--url']=$this->router->generate($options['route'],$options['route_params']);
+
+            if($options['route'] && !array_key_exists('data-ajax--url', $attr)){
+                $attr['data-ajax--url'] = $this->router->generate($options['route'], $options['route_params']);
             }
-            
-            return $attr;
+
+           return $attr;
         });
     }
 }
