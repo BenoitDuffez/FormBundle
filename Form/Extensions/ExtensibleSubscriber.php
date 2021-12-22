@@ -53,6 +53,7 @@ class ExtensibleSubscriber implements EventSubscriberInterface
             $property = $childName;
         }
         
+        if(is_null($data)){return;}
         if(!$this->isReadable($data,$property)){return;}
         
         $data = $this->getValue($data,$property);
