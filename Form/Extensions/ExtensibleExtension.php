@@ -2,9 +2,9 @@
 namespace Alsatian\FormBundle\Form\Extensions;
 
 use Symfony\Component\Form\AbstractTypeExtension;
-use Symfony\Component\Form\FormBuilderInterface;
 
 use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\FormBuilderInterface;
 
 class ExtensibleExtension extends AbstractTypeExtension
 {
@@ -22,8 +22,8 @@ class ExtensibleExtension extends AbstractTypeExtension
         }
     }
     
-    public function getExtendedType()
+    public static function getExtendedTypes(): iterable
     {
-        return FormType::class;
+        return [FormType::class];
     }
 }

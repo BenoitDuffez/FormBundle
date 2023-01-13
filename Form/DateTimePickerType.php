@@ -3,10 +3,9 @@ namespace Alsatian\FormBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\Options;
-
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\OptionsResolver\Options;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class DateTimePickerType extends AbstractType
 {
@@ -40,11 +39,13 @@ class DateTimePickerType extends AbstractType
         });
     }
         
-    public function getParent() {
+    public function getParent(): ?string
+    {
         return DateTimeType::class;
     }
-   public function getBlockPrefix()
-   {
-       return 'date_time';
-   }
+	
+    public function getBlockPrefix(): string
+    {
+        return 'date_time';
+    }
 }
