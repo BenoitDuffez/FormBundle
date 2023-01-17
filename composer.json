@@ -1,5 +1,6 @@
 {
     "name": "alsatian/form-bundle",
+    "type": "symfony-bundle",
     "description": "Symfony form types to extend built-in types. Ideal for Select2 AJAX implementations.",
     "keywords": ["symfony","select2"],
     "license": "MIT",
